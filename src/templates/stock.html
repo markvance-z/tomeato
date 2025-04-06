@@ -1,0 +1,94 @@
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/stock.css" />
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <body>
+    <header>
+      <h1>Welcome to the Stock Market</h1>
+      <div class="header-buttons">
+        <a href="../index.html" class="back-button">← Back to Calendar</a>
+      </div>
+    </header>
+    <main>
+      <div class="container">
+        <div class="selection">
+          <label for="stock-select">Select a stock:</label>
+          <select id="stock-select">
+            <option value="AAPL">AAPL - Apple Inc.</option>
+            <option value="MSFT">MSFT - Microsoft Corp.</option>
+            <option value="AMZN">AMZN - Amazon.com, Inc.</option>
+            <option value="GOOGL">GOOGL - Alphabet Inc.</option>
+            <option value="TSLA">TSLA - Tesla, Inc.</option>
+            <option value="META">META - Meta Platforms Inc.</option>
+            <option value="NVDA">NVDA - NVIDIA Corporation</option>
+            <option value="JPM">JPM - JPMorgan Chase &amp; Co.</option>
+            <option value="JNJ">JNJ - Johnson &amp; Johnson</option>
+            <option value="V">V - Visa Inc.</option>
+            <option value="PG">PG - Procter &amp; Gamble Co.</option>
+            <option value="UNH">UNH - UnitedHealth Group Inc.</option>
+            <option value="HD">HD - Home Depot Inc.</option>
+            <option value="VZ">VZ - Verizon Communications Inc.</option>
+            <option value="DIS">DIS - Walt Disney Co.</option>
+            <option value="MA">MA - Mastercard Inc.</option>
+            <option value="NFLX">NFLX - Netflix Inc.</option>
+            <option value="KO">KO - Coca-Cola Co.</option>
+            <option value="PFE">PFE - Pfizer Inc.</option>
+            <option value="MRK">MRK - Merck &amp; Co.</option>
+            <option value="INTC">INTC - Intel Corporation</option>
+            <option value="CSCO">CSCO - Cisco Systems Inc.</option>
+            <option value="T">T - AT&amp;T Inc.</option>
+            <option value="XOM">XOM - Exxon Mobil Corp.</option>
+            <option value="BA">BA - Boeing Co.</option>
+            <option value="CRM">CRM - Salesforce Inc.</option>
+            <option value="ORCL">ORCL - Oracle Corporation</option>
+            <option value="IBM">IBM - International Business Machines</option>
+            <option value="MCD">MCD - McDonald's Corp.</option>
+            <option value="WMT">WMT - Walmart Inc.</option>
+            <option value="CVX">CVX - Chevron Corporation</option>
+            <option value="ABT">ABT - Abbott Laboratories</option>
+            <option value="COST">COST - Costco Wholesale Corporation</option>
+            <option value="NKE">NKE - Nike Inc.</option>
+            <option value="DOW">DOW - Dow Inc.</option>
+            <option value="QCOM">QCOM - Qualcomm Inc.</option>
+            <option value="ADP">ADP - Automatic Data Processing Inc.</option>
+            <option value="MDT">MDT - Medtronic plc</option>
+            <option value="SBUX">SBUX - Starbucks Corp.</option>
+            <option value="GS">GS - Goldman Sachs Group Inc.</option>
+            <option value="AMGN">AMGN - Amgen Inc.</option>
+            <option value="LLY">LLY - Eli Lilly and Company</option>
+            <option value="HON">HON - Honeywell International Inc.</option>
+            <option value="CAT">CAT - Caterpillar Inc.</option>
+            <option value="GE">GE - General Electric Company</option>
+            <option value="UPS">UPS - United Parcel Service Inc.</option>
+            <option value="RTX">RTX - Raytheon Technologies Corporation</option>
+            <option value="BLK">BLK - BlackRock Inc.</option>
+            <option value="SPY">SPY - SPDR S&amp;P 500 ETF Trust</option>
+            <option value="VOO">VOO - Vanguard S&amp;P 500 ETF</option>
+          </select>
+  
+          <label for="time-range-select">Time Range:</label>
+          <select id="time-range-select">
+            <option value="365">1 year</option>
+            <option value="180">6 months</option>
+            <option value="90">3 months</option>
+            <option value="30" selected>1 month</option>
+            <option value="7">1 week</option>
+          </select>
+          
+          <button id="load-chart">Show Chart</button>
+        </div>
+  
+        <div class="chart-container">
+          <canvas id="stock-chart"></canvas>
+          <!-- Loading spinner shown while data loads -->
+          <div id="spinner" class="spinner"></div>
+        </div>
+  
+        <div id="key-details-section" class="key-details">
+          <!-- Key details and company logo will be injected here -->
+        </div>
+      </div>
+    </main>
+    <script src="../js/stock.js" defer></script>
+  </body>

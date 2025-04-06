@@ -1,0 +1,275 @@
+/* 13. Grab Handle Styling */
+.grab-handle {
+    color: var(--text-color); /* Uses CSS variable */
+    padding: 5px 0;
+    text-align: center;
+    font-size: 1.5rem;
+    cursor: grab; /* Change cursor to grab */
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    margin-bottom: 5px; /* Spacing below the handle */
+    transition: background-color 0.3s ease, color 0.5s ease; /* Smooth transition */
+
+    -webkit-user-select: none;
+    user-select: none;
+
+    cursor: move; /* fallback if grab cursor is unsupported */
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
+    cursor: grab;
+}
+
+.grab-handle:hover {
+    background-color: var(--primary-color); /* Uses CSS variable */
+}
+
+.grab-handle:active {
+    cursor: -moz-grabbing;
+    cursor: -webkit-grabbing;
+    cursor: grabbing; /* Change cursor to grabbing when clicked */
+}
+
+/* Widget */
+.widget {
+    background-color: var(--secondary-color); /* Uses CSS variable */
+    border: 1px solid var(--primary-color); /* Uses CSS variable */
+    padding: 10px;
+    border-radius: 15px;
+    color: var(--text-color); /* Uses CSS variable */
+    transition: background-color 0.3s ease, border 0.3s ease, color 0.5s ease; /* Smooth transition */
+}
+
+.widget:hover {
+    background-color: var(--secondary-color); /* Maintains original background */
+    border-color: var(--primary-color); /* Maintains original border */
+    /* Alternatively, remove hover effects entirely by commenting out or deleting these lines:
+    background-color: var(--button-hover-bg-color);
+    border-color: var(--current-day-bg-color);
+    */
+}
+
+/* Task Box Headers */
+.widget h3 {
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    color: var(--primary-color); /* Uses CSS variable */
+    text-align: center;
+    transition: color 0.5s ease; /* Smooth transition */
+}
+
+/* Task Lists */
+.widget ul {
+    list-style: none;
+    max-height: 200px; /* Adjust as needed */
+    overflow-y: auto; /* Enable scrolling if necessary */
+    transition: color 0.5s ease; /* Smooth transition */
+}
+
+.widget li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    padding: 5px;
+    border-radius: 10px;
+    transition: background-color 0.3s ease, color 0.5s ease; /* Smooth transition */
+}
+
+.widget li:hover {
+    background-color: var(--primary-color); /* Uses CSS variable */
+}
+
+.widget li input[type="checkbox"] {
+    margin-right: 10px;
+    accent-color: var(--primary-color); /* Uses CSS variable */
+    cursor: pointer;
+    transition: accent-color 0.5s ease; /* Smooth transition */
+}
+
+/* Style for Task Lists */
+.task-list {
+    width: 100%;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 200px; /* Adjust as needed */
+    overflow-y: auto; /* Enable scrolling if necessary */
+    transition: color 0.5s ease; /* Smooth transition */
+}
+
+/* Habit Tracker Wide Button - Removed to prevent adding arbitrary habits */
+/* If you want to keep it styled for future use, retain the styles but ensure the button is removed from HTML */
+
+#calendar-header {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+#calendar-header h2 {
+    font-size: 1.8rem;
+    color: var(--primary-color); /* Uses CSS variable */
+    margin: 0;
+    text-transform: uppercase; /* Ensures the month name is in all caps */
+    transition: color 0.5s ease; /* Smooth transition */
+}
+
+#calendar-weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    font-weight: bold;
+    color: var(--primary-color); /* Uses CSS variable */
+    margin-bottom: 10px;
+    transition: color 0.5s ease; /* Smooth transition */
+}
+
+#calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr); /* Maintain 7 columns */
+    gap: 10px; /* Adjusted gap for better spacing */
+    transition: background-color 0.5s ease; /* Smooth transition */
+}
+
+/* Calendar Cell Styling */
+.calendar-cell {
+    background: var(--day-bg-color); /* Uses CSS variable */
+    border: 1px solid var(--primary-color); /* Uses CSS variable */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Vertically center content */
+    padding: 10px; /* Increased padding for better spacing */
+    border-radius: 15px;
+    font-size: 1.2rem; /* Slightly larger text */
+    color: var(--text-color); /* Uses CSS variable */
+    height: 80px; /* Increased height for taller boxes */
+    position: relative; /* For positioning child elements if needed */
+    transition: background-color 0.3s ease, height 0.3s ease; /* Smooth transition */
+}
+
+.calendar-cell:hover {
+    background-color: var(--primary-color); /* Uses CSS variable */
+    transition: background-color 0.3s ease;
+}
+
+.day-number {
+    background-color: var(--day-number-bg-color); /* Uses CSS variable */
+    color: var(--day-number-text-color); /* Uses new CSS variable */
+    width: 35px; /* Slightly smaller for compactness */
+    height: 35px;
+    border-radius: 50%; /* Makes the span a circle */
+    margin-top: 5px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+}
+
+/* Fixes current day being different size from other cells */
+#current-day {
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+/* Highlight Current Day */
+#current-day .day-number {
+    background-color: var(--current-day-bg-color); /* Uses CSS variable */
+    color: var(--day-number-text-color); /* Uses CSS variable */
+    border: 2px solid var(--day-number-text-color); /* Uses CSS variable */
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.calendar-task {
+    background: blue; /* Uses CSS variable */
+    border: 1px solid var(--primary-color); /* Uses CSS variable */
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: background-color 0.3s ease, height 0.3s ease; /* Smooth transition */
+}
+
+/* fixes the current month being slightly wider than the rest */
+.calendar-cell#current-day {
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+/* 14. Responsive Design */
+@media (max-width: 768px) {
+    .calendar-cell {
+        height: 70px; /* Slightly reduced height on smaller screens */
+    }
+    
+    .day-number {
+        width: 30px;
+        height: 30px;
+        font-size: 1rem;
+    }
+    
+    #calendar-header h2 {
+        font-size: 1.5rem;
+    }
+    
+    #calendar-weekdays {
+        font-size: 0.9rem;
+    }
+
+    #habit-list {
+        max-height: 150px;
+    }
+
+    /* Top Panel Button Adjustment for Mobile */
+    header {
+        flex-wrap: wrap; /* Allow buttons to wrap if necessary */
+    }
+
+    header button {
+        margin: 5px 0; /* Add margin between buttons on small screens */
+        width: 45%; /* Adjust width for better spacing */
+    }
+}
+
+/* 15. Additional Styling for Empty Calendar Cells (Optional) */
+.calendar-cell.empty {
+    background: transparent;
+    border: none;
+}
+
+.calendar-cell.empty .day-number {
+    display: none;
+}
+
+/* 12. Widget Navigation */
+.interface {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: color 0.5s ease; /* Smooth transition */
+}
+
+.arrow {
+    background-color: var(--arrow-bg-color); /* Uses CSS variable */
+    color: var(--text-color); /* Uses CSS variable */
+    border: none;
+    padding: 5px 10px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border-radius: 15px;
+    transition: background-color 0.3s ease, color 0.5s ease; /* Smooth transition */
+}
+
+.arrow:hover {
+    background-color: var(--primary-color); /* Uses CSS variable */
+}
+
+ul {
+    flex: 1;
+    list-style: none;
+    padding: 0;
+    margin: 0 10px;
+    max-height: 5rem; /* Limit height */
+    overflow: hidden; /* Hide overflow */
+    transition: color 0.5s ease; /* Smooth transition */
+}

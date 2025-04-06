@@ -1,0 +1,79 @@
+<!-- Your main CSS files -->
+<link rel="stylesheet" href="../css/style.css" />
+<link rel="stylesheet" href="../css/Journal.css" />
+
+<body>
+  <!-- Back to Calendar -->
+  <a href="../index.html" class="back-btn">Back to Calendar</a>
+  
+  <!-- Date display (click to toggle mini-calendar) -->
+  <div class="date-nav" style="position: absolute; top: 20px; right: 30px; cursor: pointer;">
+    <span id="journal-date">Loading...</span>
+  </div>
+  
+  <!-- Mini-calendar popup -->
+  <div class="mini-calendar" id="mini-calendar">
+    <div class="mini-calendar-nav">
+      <button id="mini-cal-prev-month">&lt;</button>
+      <span id="mini-calendar-title">Month Year</span>
+      <button id="mini-cal-next-month">&gt;</button>
+    </div>
+    <div class="mini-calendar-weekdays">
+      <div>Sun</div>
+      <div>Mon</div>
+      <div>Tue</div>
+      <div>Wed</div>
+      <div>Thu</div>
+      <div>Fri</div>
+      <div>Sat</div>
+    </div>
+    <div class="mini-calendar-grid" id="mini-calendar-grid"></div>
+  </div>
+  
+  <!-- Toggle Buttons: Journal / Notes -->
+  <div class="toggle-buttons-container">
+    <button id="journal-btn" class="toggle-btn active">Journal</button>
+    <button id="notes-btn" class="toggle-btn">Notes</button>
+  </div>
+  
+  <!-- Journal Section -->
+  <div id="journal-section">
+    <div class="journal-container">
+      <h2>My Journal</h2>
+      <input type="text" id="journal-title" placeholder="Journal Title..." />
+      <textarea id="journal-text" placeholder="Write your thoughts here..."></textarea>
+      <button id="save-journal">Save Entry</button>
+    </div>
+    <div class="journal-image-container">
+      <h3>Add an Image</h3>
+      <input type="file" id="journal-image-input" accept="image/*" />
+      <!-- Remove Image Button -->
+      <button type="button" id="remove-image-btn">Remove Image</button>
+      <div id="image-preview"></div>
+    </div>
+  </div>
+  
+  <!-- Notes Section (Text Only) -->
+  <div id="notes-section" class="mode-write" style="display: none;">
+    <div class="notes-container">
+      <h2>General Notes</h2>
+      <input type="text" id="notes-title" placeholder="Notes Title..." />
+      <div id="notes-content">
+        <textarea id="notes-textarea" placeholder="Type your notes here..."></textarea>
+      </div>
+      <button id="save-notes">Save Notes</button>
+    </div>
+  </div>
+  
+  <!-- Pencil Animation Video (for save animation) -->
+  <video 
+    id="pencil-animation" 
+    src="PencilAnimation.webm" 
+    style="display: none; position: fixed; left: 50%; top: 50%; transform: translate(-50%, -50%); z-index: 1000;"
+    playsinline 
+    muted>
+  </video>
+  
+  <!-- Include the Journal JavaScript -->
+  <script src="../js/Journal.js"></script>
+</body>

@@ -1,0 +1,342 @@
+:root {
+    --primary-color: #8B0000;         /* Deep theater red */
+    --accent-color: #FFD700;          /* Shimmering gold */
+    --background-color: #F5DEB3;      /* Warm beige/off-white */
+    --card-background: #F5DEB3;       /* Same as background for contrast */
+    --text-color: #000000;            /* Classic black */
+    --header-gradient: linear-gradient(135deg, #8B0000, #A50000); /* Rich red gradient */
+  }
+  
+  /* Global Reset and Base Styles */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(-45deg, 
+                #8B0000 0%, 
+                #B22222 20%, 
+                #8B0000 40%, 
+                #5C0000 60%, 
+                #8B0000 80%, 
+                #B22222 100%);
+    background-size: 300% 300%;
+    animation: gradientBG 20s ease infinite;
+    color: var(--text-color);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  
+  /* Sticky Header with Parallax-like Effect */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--header-gradient);
+    padding: 1rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  }
+  .header-inner {
+    max-width: 1200px;
+    margin: auto;
+    position: relative;
+    text-align: center;
+  }
+  header h1 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: var(--background-color);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  #back-to-calendar {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: var(--accent-color);
+    border: none;
+    padding: 0.6rem 1rem;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+  }
+  #back-to-calendar:hover {
+    background-color: #e6c200;
+    transform: scale(1.05);
+  }
+  
+  /* Main Navigation under Header */
+  .main-nav {
+    text-align: center;
+    margin-top: 1rem;
+  }
+  .main-nav button {
+    background-color: var(--accent-color);
+    color: var(--text-color);
+    border: none;
+    padding: 0.8rem 1.2rem;
+    margin: 0 0.5rem;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+  }
+  .main-nav button:hover {
+    background-color: #e6c200;
+    transform: scale(1.05);
+  }
+  
+  /* Sort Options Drop Down - Centered with spinning arrow inside the box */
+  .sort-options {
+    text-align: center;
+    margin: 1rem auto;
+  }
+  .sort-options label {
+    font-size: 1.1rem;
+    margin-right: 0.5rem;
+    color: var(--background-color);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    vertical-align: middle;
+  }
+  
+  /* The container that wraps the select and arrow */
+  .select-container {
+    display: inline-block;    /* So label and container align side-by-side */
+    position: relative;       /* Position for arrow absolutely inside */
+  }
+  
+  /* The actual select box */
+  .select-container select {
+    padding: 0.6rem 1rem;
+    padding-right: 2.5rem; /* Space for arrow */
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 500;
+    background-color: var(--accent-color);
+    color: var(--text-color);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .select-container select:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(255,215,0,0.5);
+  }
+  .select-container select:hover {
+    transform: scale(1.02);
+  }
+  
+  /* The arrow element inside the container */
+  .dropdown-arrow {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    pointer-events: none;
+    transition: transform 0.5s ease;
+    font-size: 1rem;
+    color: var(--text-color);
+  }
+  
+  /* Spin the arrow on hover */
+  .select-container:hover .dropdown-arrow {
+    transform: translateY(-50%) rotate(180deg);
+  }
+  
+  /* Month Display */
+  .month-display {
+    text-align: center;
+    padding: 1rem 0;
+    background: rgba(0, 0, 0, 0.2);
+  }
+  .month-display h2 {
+    font-size: 2.2rem;
+    font-weight: 400;
+    color: var(--background-color);
+  }
+  
+  /* Movies Grid */
+  #movies-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: auto;
+  }
+  
+  /* Movie Card */
+  .movie-card {
+    position: relative;
+    background-color: var(--card-background);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    transition: transform 0.4s, box-shadow 0.4s;
+    cursor: pointer;
+  }
+  .movie-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+  }
+  
+  /* Movie Poster with subtle hover scale */
+  .movie-poster {
+    width: 100%;
+    height: 380px;
+    object-fit: cover;
+    transition: transform 0.4s;
+  }
+  .movie-card:hover .movie-poster {
+    transform: scale(1.03);
+  }
+  
+  /* Movie Info */
+  .movie-info {
+    padding: 1.2rem;
+  }
+  .movie-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+    text-transform: uppercase;
+    color: var(--primary-color);
+  }
+  .movie-release {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 0.6rem;
+  }
+  .movie-overview {
+    font-size: 1rem;
+    color: var(--text-color);
+  }
+  
+  /* Interactive Icons: Heart and Thumbs Up */
+  .heart-icon,
+  .thumbs-icon {
+    position: absolute;
+    top: 12px;
+    font-size: 32px;
+    cursor: pointer;
+    user-select: none;
+    z-index: 2;
+    transition: transform 0.2s;
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+  }
+  .heart-icon {
+    left: 12px;
+    color: #ffeb99;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+  }
+  .heart-icon.favorited {
+    color: var(--accent-color);
+    text-shadow: none;
+  }
+  .thumbs-icon {
+    left: 40px; /* Closer to the heart */
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(144,238,144, 0.6);
+  }
+  .thumbs-icon.liked {
+    -webkit-text-stroke: 0;
+    color: #006400;
+  }
+  .heart-icon:hover,
+  .thumbs-icon:hover {
+    transform: scale(1.2);
+  }
+  
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 1.2rem;
+    background: #000;
+    color: var(--background-color);
+    font-size: 0.9rem;
+  }
+  
+  /* Modal Styles */
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1500;
+    animation: fadeIn 0.5s ease-out;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  .modal-content {
+    background: var(--card-background);
+    padding: 2.5rem;
+    border-radius: 12px;
+    max-width: 800px;
+    width: 95%;
+    position: relative;
+    max-height: 90vh;
+    overflow-y: auto;
+    animation: slideIn 0.5s ease-out;
+  }
+  @keyframes slideIn {
+    from { transform: translateY(-30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+  .modal-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: var(--accent-color);
+    color: var(--text-color);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  .modal-close:hover {
+    background: #e6c200;
+  }
+  .modal-content h2 {
+    margin-bottom: 1rem;
+    font-size: 2.2rem;
+    color: var(--primary-color);
+    text-transform: uppercase;
+  }
+  .modal-content p {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    line-height: 1.5;
+  }
+  .modal-content img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+  }
+  
+  /* Animated Gradient Background Keyframes */
+  @keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }

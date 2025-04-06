@@ -1,0 +1,298 @@
+    <!-- Global styles and Pomodoro-specific CSS -->
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="stylesheet" href="../css/pomodoro.css" />
+
+    <!-- Inline CSS for header, progress ring, and layout -->
+    <style>
+      /* Fixed Header with Modern, Neutral Styling */
+      header.pomodoro-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 70px;
+        background-color: rgba(128, 128, 128, 0.8);
+        color: #fff;
+        /* font-family: "Helvetica Neue", Arial, sans-serif; /* Commented out for font setting to work */
+        font-size: 1.8rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 20px;
+        box-sizing: border-box;
+        z-index: 1000;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+      }
+      .header-title {
+        font-weight: bold;
+      }
+      .header-buttons {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .header-buttons a,
+      .header-buttons button {
+        padding: 8px 12px;
+        font-size: 1rem;
+        background-color: rgba(255, 255, 255, 0.3);
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        text-decoration: none;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+      .header-buttons a:hover,
+      .header-buttons button:hover {
+        background-color: rgba(255, 255, 255, 0.5);
+      }
+      /* Dropdown styling */
+      #ring-select {
+        padding: 6px;
+        border-radius: 4px;
+        border: none;
+        font-size: 1rem;
+      }
+      /* Volume slider styling */
+      #ring-volume {
+        width: 80px;
+        cursor: pointer;
+      }
+      /* Add top padding so content isn't hidden behind header */
+      body {
+        margin: 0;
+        padding-top: 90px;
+      }
+
+      /* Modes Buttons */
+      .modes {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin: 20px 0;
+      }
+      .modes button {
+        padding: 10px 15px;
+        font-size: 1rem;
+        border: none;
+        border-radius: 5px;
+        background: #D96C5F;
+        color: #fff;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+      .modes button:hover {
+        background: #C95A4E;
+      }
+
+      /* Progress Ring and Timer Display */
+      .progress-container {
+        position: relative;
+        width: 120px;
+        height: 120px;
+        margin: 20px auto;
+      }
+      .progress-container svg {
+        width: 120px;
+        height: 120px;
+        transform: rotate(-90deg);
+      }
+      .progress-ring__circle {
+        transition: stroke-dashoffset 0.35s;
+        transform-origin: center;
+      }
+      /* Timer text is now nudged upward slightly by adjusting translateY */
+      .timer {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -52%);
+        font-size: 32px;
+        font-weight: bold;
+        color: #fff;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+      }
+
+      /* Controls Buttons */
+      .controls {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 20px;
+      }
+      .controls button {
+        padding: 10px 20px;
+        font-size: 1rem;
+        border: none;
+        border-radius: 5px;
+        background: #D96C5F;
+        color: #fff;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+      .controls button:hover {
+        background: #C95A4E;
+      }
+
+      /* Status text */
+      #status {
+        text-align: center;
+        font-size: 1.2rem;
+        color: #fff;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+      }
+
+      /* Modal styles for Instructions */
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 2000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+      .modal-content {
+        background-color: #fff;
+        margin: 10% auto;
+        padding: 20px;
+        border-radius: 5px;
+        width: 80%;
+        max-width: 600px;
+        color: #000;
+      }
+      .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+      .close:hover {
+        color: #000;
+      }
+    </style>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        let savedTheme =
+          sessionStorage.getItem("theme") ||
+          (window.parent?.document.body.classList.value || "theme-dark");
+        document.body.classList = savedTheme;
+        console.log("Applied theme:", savedTheme);
+      });
+    </script>
+  </head>
+  <body>
+    <!-- Fixed Header -->
+    <header class="pomodoro-header">
+      <div class="header-title">Pomodoro Timer</div>
+      <div class="header-buttons">
+        <button id="instructions-btn">Instructions</button>
+        <label for="ring-select" style="font-size:0.9rem;">Choose Ring:</label>
+        <select id="ring-select">
+          <option value="Marimba.m4a">Marimba</option>
+          <option value="Ring.m4a">Ring</option>
+          <option value="C-3PO.m4a">C-3PO</option>
+          <option value="Spongebob Horn.m4a">Spongebob Horn</option>
+        </select>
+        <button id="test-ring-btn">Test Ring</button>
+        <input type="range" id="ring-volume" min="0" max="1" step="0.01" value="1" />
+        <a href="../index.html">Back to Calendar</a>
+      </div>
+    </header>
+
+    <!-- Pomodoro Container -->
+    <div class="container">
+      <div class="modes">
+        <button id="pomodoro-btn">Pomodoro</button>
+        <button id="short-break-btn">Short Break</button>
+        <button id="long-break-btn">Long Break</button>
+      </div>
+
+      <!-- Progress Ring with Timer Display -->
+      <div class="progress-container">
+        <svg id="progress-ring" width="120" height="120">
+          <circle
+            class="progress-ring__circle"
+            stroke="#fff"
+            stroke-width="4"
+            fill="transparent"
+            r="52"
+            cx="60"
+            cy="60"
+          />
+        </svg>
+        <div class="timer" id="timer">25:00</div>
+      </div>
+
+      <div class="controls">
+        <button id="start-btn">Start</button>
+        <button id="pause-btn">Pause</button>
+        <button id="reset-btn">Reset</button>
+      </div>
+      <p id="status">Time to focus!</p>
+    </div>
+
+    <!-- Instructions Modal -->
+    <div id="instructions-modal" class="modal">
+      <div class="modal-content">
+        <span class="close" id="close-modal">&times;</span>
+        <h2>Pomodoro Technique</h2>
+        <p>
+          The Pomodoro Technique was developed by Francesco Cirillo in the late 1980s. It uses a timer to break work into intervals, typically 25 minutes in length, separated by short breaks. Each interval is known as a "pomodoro".
+        </p>
+        <p>
+          <strong>Steps:</strong><br />
+          1) Choose a task.<br />
+          2) Set the timer.<br />
+          3) Work until the timer rings.<br />
+          4) Take a short break.<br />
+          5) Every 4th pomodoro, take a longer break.
+        </p>
+      </div>
+    </div>
+
+    <!-- Pencil Animation Video -->
+    <video
+      id="pencil-animation"
+      src="PencilAnimation.webm"
+      style="display: none; position: fixed; left: 50%; top: 50%; transform: translate(-50%, -50%); z-index: 1000;"
+      playsinline
+      muted
+    ></video>
+
+    <!-- Session Stats Card (Bottom-Right) -->
+  <div class="stats-container" id="stats-container">
+    <h3>Session Stats</h3>
+    <p>Pomodoros Completed (Today): <span id="pomodoros-completed">0</span></p>
+    <p>Total Focus Time (Today): <span id="focus-time-today">0</span> min</p>
+    <button id="clear-stats-btn">Clear Stats</button>
+  </div>
+
+
+    <script src="../js/pomodoro.js" defer></script>
+
+    <script>
+      const instructionsBtn = document.getElementById("instructions-btn");
+      const modal = document.getElementById("instructions-modal");
+      const closeModal = document.getElementById("close-modal");
+
+      instructionsBtn.addEventListener("click", function () {
+        modal.style.display = "block";
+      });
+
+      closeModal.addEventListener("click", function () {
+        modal.style.display = "none";
+      });
+
+      window.addEventListener("click", function (event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      });
+    </script>
+  </body>

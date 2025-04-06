@@ -1,0 +1,235 @@
+/* Define color variables for easy theme adjustments */
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #2980b9;
+    --accent-color: #f1c40f;
+    --accent-dark: #f39c12;
+    --bg-light: rgba(255, 255, 255, 0.1);
+    --text-light: #f0f0f0;
+    --error-color: #ff4d4d;
+  }
+  
+  /* Global styles */
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(-45deg, #87cefa, #4682b4, #00008b, #000000);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    color: var(--text-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+  }
+  
+  /* Background animation */
+  @keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
+  /* Navigation styling */
+  nav {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 10;
+  }
+  .back-button {
+    padding: 10px 15px;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    border: none;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .back-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+  }
+  
+  /* Container */
+  .container {
+    width: 90%;
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
+    backdrop-filter: blur(10px);
+  }
+  
+  /* Header styling */
+  header h1 {
+    font-size: 2.8rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+  }
+  header p {
+    font-size: 1.2rem;
+    color: #b0b0b0;
+    margin-bottom: 20px;
+  }
+  
+  /* Main controls */
+  .controls {
+    display: grid;
+    gap: 20px;
+    margin-bottom: 30px;
+  }
+  .select-wrapper {
+    position: relative;
+  }
+  /* Style for the dropdown select with a custom arrow */
+  select {
+    width: 100%;
+    padding: 12px 45px 12px 15px; /* Extra right padding reserved for the arrow */
+    margin: 12px 0;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    outline: none;
+    background: #fff;
+    color: #000;
+    cursor: pointer;
+    transition: box-shadow 0.2s;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+  select:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  }
+  select option {
+    background: #fff;
+    color: #000;
+  }
+  /* Custom arrow using a pseudo-element */
+  .select-wrapper::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    width: 12px;
+    height: 12px;
+    background: url("data:image/svg+xml;charset=UTF-8,%3Csvg width='12' height='12' viewBox='0 0 10 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolygon points='0,0 10,0 5,6' fill='%23000'/%3E%3C/svg%3E") no-repeat center center;
+    pointer-events: none;
+    transition: transform 0.3s;
+  }
+  .select-wrapper:focus-within::after {
+    transform: translateY(-50%) rotate(180deg);
+  }
+  
+  /* Button group */
+  .buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  button {
+    flex: 1;
+    padding: 12px 15px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    color: #fff;
+  }
+  button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+  }
+  /* Special styling for location button */
+  #getLocationWeatherBtn {
+    background: linear-gradient(45deg, var(--accent-color), var(--accent-dark));
+    color: #000;
+  }
+  
+  /* Weather widget styling */
+  .widget {
+    background: var(--bg-light);
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    text-align: left;
+  }
+  .widget h3 {
+    margin-top: 0;
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+  }
+  
+  /* Center the weather details */
+  .weather-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: 0 auto;
+  }
+  .weather-details h2 {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 600;
+  }
+  .weather-details p {
+    margin: 10px 0;
+    font-size: 1.1rem;
+    color: #e0e0e0;
+  }
+  .weather-icon {
+    width: 90px;
+    height: 90px;
+  }
+  
+  /* Forecast item styling */
+  .forecast-item {
+    display: flex;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+  }
+  .forecast-item:last-child {
+    border-bottom: none;
+  }
+  .forecast-time {
+    width: 80px;
+    font-weight: 600;
+  }
+  .forecast-details {
+    margin-left: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .forecast-details img {
+    width: 40px;
+    height: 40px;
+  }
+  @media (max-width: 480px) {
+    header h1 {
+      font-size: 2.2rem;
+    }
+    .buttons {
+      flex-direction: column;
+    }
+  }
+  

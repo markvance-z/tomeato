@@ -1,0 +1,308 @@
+<div class="container">
+    {{#if auth.isAuthenticated}}
+    <h1 class="header">{{title}}</h1>
+    <p>{{message}}</p>
+    
+    <!--<a href="/logout">Logout</a>-->
+    <!--<link rel="stylesheet" href="css/modal.css" />-->
+
+    <!--<script type="text/javascript" src="js/globals.js"></script>-->
+    <!-- Top Panel -->
+    <header>
+      <button onclick="window.location.href='/Journal.html'">Journal</button>
+      <button onclick="addTaskWindow()">Add Task</button>
+      <button onclick="addHabitWindow()">Add Habit</button>
+         <!-- Pomodoro Icon in the Middle -->
+         <a href="/pomodoro.html" class="/pomodoro-icon">
+          <img src="Images/pomodoro.png" alt="Pomodoro Timer" style="width: 65px; height: auto;">
+      </a>
+      <a href="/settings.html">
+        <button>Settings</button>
+      </a>
+      <a href="/signup.html">
+        <button>Sign Up</button>
+      </a>
+      <a href="/logout">
+        <button>Logout</button>
+      </a>
+
+    </header>
+
+
+      <!-- Modal for adding a new task -->
+      <div class="modal" id="add-task">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button class="cancel-btn" type="button" onclick="closeTaskWindow()">Cancel</button>
+            <h2>Add Task</h2>
+            <button class="confirm-btn" id="addTaskButton" type="submit" form="add-task-form">Confirm</button>
+          </div>
+
+          <form id="add-task-form">
+            <label for="add-task-name">Title</label>
+            <input type="text" id="task-name" name="add-task-name" required />
+
+            <label for="add-task-due-date">Due Date</label>
+            <input type="date" id="task-due-date" name="add-task-due-date" />
+
+            <label for="task-category">Category</label>
+            <input type="text" list="categories" id="task-category" name="task-category"></input>
+            <datalist id="categories">
+              <option value="Work"></option>
+              <option value="Personal"></option>
+              <option value="Shopping"></option>
+              <option value="Others"></option>
+            </datalist>
+
+            <label>Priority</label>
+            <div class="priority-buttons">
+              <button type="button" class="priority-btn" data-value="0">Low</button>
+              <button type="button" class="priority-btn active" data-value="1">Normal</button>
+              <button type="button" class="priority-btn" data-value="2">High</button>
+              <input type="hidden" id="add-task-priority" name="add-task-priority" value="1">
+            </div>
+
+            <div class="modal-footer">
+            
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Modal for editing task -->
+      <div class="modal" id="edit-task">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button class="cancel-btn" type="button" onclick="closeEditWindow()">Cancel</button>
+            <h2>Edit Task</h2>
+            <button class="confirm-btn" id="editTaskButton" type="submit" form="edit-task-form">Confirm</button>
+          </div>
+
+          <form id="edit-task-form">
+            <label for="edit-task-name">Title</label>
+            <input type="text" id="edit-task-name" name="edit-task-name" required />
+
+            <label for="edit-task-due-date">Change Date</label>
+            <input type="date" id="edit-task-due-date" name="edit-task-due-date" />
+
+            <label for="edit-task-category">Category</label>
+            <input list="categories" id="edit-task-category" name="edit-task-category"></input>
+            <datalist id="categories">
+              <option value="Work"></option>
+              <option value="Personal"></option>
+              <option value="Shopping"></option>
+              <option value="Others"></option>
+            </datalist>
+
+            <label>Priority</label>
+            <div class="priority-buttons">
+              <button type="button" class="priority-btn" data-value="0">Low</button>
+              <button type="button" class="priority-btn active" data-value="1">Normal</button>
+              <button type="button" class="priority-btn" data-value="2">High</button>
+              <input type="hidden" id="edit-task-priority" name="edit-task-priority" value="1">
+            </div>
+
+            <div class="modal-footer">
+              <button id="deleteTaskButton" type="button" class="delete-btn">Delete</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Modal for adding a new habit -->
+      <div class="modal" id="add-habit">
+        <div class="modal-content">
+          <span class="close" onclick="closeHabitWindow()">&times;</span>
+          <h2>Add a New Habit</h2>
+          <form id="add-habit-form">
+            <label for="add-habit-name">Habit Name:</label>
+            <input type="text" id="habit-name" name="add-habit-name" required />
+            <br />
+            <label for="add-habit-frequency">Frequency:</label>
+            <input type="text" list="frequencies" id="habit-frequency" name="add-habit-frequency" />
+            <datalist id="frequencies">
+              <option value="Daily"></option>
+              <option value="Weekly"></option>
+              <option value="Monthly"></option>
+            </datalist>
+            <br />
+            <div class="modal-footer">
+              <button class="cancel-btn" type="button" onclick="closeHabitWindow()">Cancel</button>
+              <button id="add-habit-button" type="submit">Add Habit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Modal for editing a habit -->
+      <div class="modal" id="edit-habit">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button class="cancel-btn" type="button" onclick="closeHabitEditWindow()">Cancel</button>
+            <h2>Edit Habit</h2>
+            <button class="confirm-btn" type="submit" form="edit-habit-form">Confirm</button>
+          </div>
+
+          <form id="edit-habit-form">
+            <label for="edit-habit-name">Habit Name:</label>
+            <input type="text" id="edit-habit-name" name="edit-habit-name" required />
+            <br />
+            <label for="edit-habit-frequency">Frequency:</label>
+            <input type="text" id="edit-habit-frequency" name="edit-habit-frequency" />
+            <br />
+          </form>
+
+          <div class="modal-footer">
+            <button class="delete-btn" type="button" id="deleteHabitButton" onclick="deleteHabit()">Delete</button>
+          </div>
+        </div>
+      </div>
+
+
+    <!-- Main Content -->
+    <div class="main-content" id="layout-default">
+      <!-- Left Column: Calendar + Habit Tracker -->
+
+      <!-- Calendar Section -->
+      <div class="widget" id="calendar">
+        <div class="grab-handle">&#9776;</div>
+        <!-- Grab handle -->
+        <!-- Calendar Header -->
+        <div class="interface">
+          <button class="arrow left-arrow" onclick="setCalendar(-1)">
+            &#8249;
+          </button>
+
+          <div id="calendar-content">
+            <div id="calendar-header"></div>
+
+            <div id="calendar-weekdays">
+              <div>Sun</div>
+              <div>Mon</div>
+              <div>Tue</div>
+              <div>Wed</div>
+              <div>Thu</div>
+              <div>Fri</div>
+              <div>Sat</div>
+            </div>
+
+            <div id="calendar-grid"></div>
+          </div>
+
+          <button class="arrow right-arrow" onclick="setCalendar(1)">
+            &#8250;
+          </button>
+        </div>
+      </div>
+
+      <!-- Habit Tracker Section -->
+      <div class="widget" id="habits">
+        <div class="grab-handle">&#9776;</div>
+        <!-- Grab handle -->
+        <div class="interface">
+          <button disabled 
+          class="arrow left-arrow" id="habits-back" 
+          onclick="renderWidget('habits', -1)">
+            &#8249;
+          </button>
+
+          <div class="task-content">
+            <h3>Habit Tracker</h3>
+            <ul class="task-list" id="habits-list">
+              <!-- Habits will be dynamically added here -->
+            </ul>
+          </div>
+
+          <button
+          class="arrow right-arrow" id="habits-forward"
+          onclick="renderWidget('habits', 1)">
+            &#8250;
+          </button>
+        </div>
+      </div>
+
+      <!-- Tasks Section -->
+      <div class="widget" id="today">
+        <div class="grab-handle">&#9776;</div>
+        <div class="interface">
+          <button disabled
+          class="arrow left-arrow" id="today-back"
+          onclick="renderWidget('today', -1)">
+            &#8249;
+          </button>
+
+          <div class="task-content">
+            <h3>Today's Tasks</h3>
+            <ul class="task-list" id="today-list">
+              <!-- Tasks will be dynamically added here -->
+            </ul>
+          </div>
+
+          <button
+          class="arrow right-arrow" id="today-forward"
+          onclick="renderWidget('today', 1)">
+            &#8250;
+          </button>
+        </div>
+      </div>
+
+      <div class="widget" id="week">
+        <div class="grab-handle">&#9776;</div>
+        <div class="interface">
+          <button disabled
+          class="arrow left-arrow" id="week-back"
+          onclick="renderWidget('week', -1)">
+            &#8249;
+          </button>
+
+          <div class="task-content">
+            <h3>7 Days Tasks</h3>
+            <ul class="task-list" id="week-list">
+              <!-- Tasks will be dynamically added here -->
+            </ul>
+          </div>
+
+          <button
+          class="arrow right-arrow" id="week-forward"
+          onclick="renderWidget('week', 1)">
+            &#8250;
+          </button>
+        </div>
+      </div>
+
+      <div class="widget" id="month">
+        <div class="grab-handle">&#9776;</div>
+        <div class="interface">
+          <button disabled
+          class="arrow left-arrow" id="month-back"
+          onclick="renderWidget('month', -1)">
+            &#8249;
+          </button>
+
+          <div class="task-content">
+            <h3>30 Days Tasks</h3>
+            <ul class="task-list" id="month-list">
+              <!-- Tasks will be dynamically added here -->
+            </ul>
+          </div>
+
+          <button
+          class="arrow right-arrow" id="month-forward"
+          onclick="renderWidget('month', 1)">
+            &#8250;
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <h1 id="motivational-quote">Your Life in a Glance</h1>
+    </footer>
+
+    {{else}}
+      <h1 class="header">{{title}}</h1>
+      <p>{{message}}</p>
+      <a href="/login">Login</a>
+  {{/if}}
+</div>

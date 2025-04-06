@@ -1,0 +1,32 @@
+{
+  "name": "web-wizards",
+  "version": "1.0.0",
+  "description": "https://zohayr101.github.io/Web-Wizards/",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Zohayr101/Web-Wizards.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Zohayr101/Web-Wizards/issues"
+  },
+  "homepage": "https://github.com/Zohayr101/Web-Wizards#readme",
+  "dependencies": {
+    "@hapi/bell": "^13.0.2",
+    "@hapi/cookie": "^12.0.1",
+    "@hapi/hapi": "^21.3.12",
+    "@hapi/inert": "^7.1.0",
+    "@hapi/vision": "^7.0.3",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "fs-extra": "^11.3.0",
+    "handlebars": "^4.7.8",
+    "mssql": "^11.0.1"
+  }
+}

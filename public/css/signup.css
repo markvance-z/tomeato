@@ -1,0 +1,177 @@
+/* ========================= */
+/* Default Theme (Dark Mode - Oakland University) */
+/* ========================= */
+:root {
+    --bg-color: #1c1c1c;
+    --text-color: #f2f2f2;
+    --primary-color: #a37c27;
+    --secondary-color: #5a463a;
+    --button-bg-color: #5a463a;
+    --button-hover-bg-color: #a37c27;
+    --button-text-color: #f2f2f2;
+}
+
+/* Global Theme Styles */
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: Arial, sans-serif;
+    transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+/* ========================= */
+/* Theme Variants */
+/* ========================= */
+/* Green Theme */
+body.green-theme {
+    --bg-color: #f3e5f5;
+    --text-color: #463a77;
+    --primary-color: #a8d5ba;
+    --secondary-color: #ffffff;
+    --button-bg-color: #b8a1d9;
+    --button-hover-bg-color: #e4c5f9;
+    --button-text-color: #463a77;
+}
+
+/* Purple Theme */
+body.purple-theme {
+    --bg-color: #ffffff;
+    --text-color: #463a77;
+    --primary-color: #b8a1d9;
+    --secondary-color: #f3e5f5;
+    --button-bg-color: #a8d5ba;
+    --button-hover-bg-color: #cfece0;
+    --button-text-color: #463a77;
+}
+
+/* Lilac Theme */
+body.lilac-theme {
+    --bg-color: #f3e5f5;
+    --text-color: #2c3e50;
+    --primary-color: #6a5acd;
+    --secondary-color: #ffffff;
+    --button-bg-color: #d9eaf1;
+    --button-hover-bg-color: #b3d3e5;
+    --button-text-color: #2c3e50;
+}
+
+/* Tropical Theme */
+body.light-theme {
+    --bg-color: #87CEEB;
+    --text-color: #003366;
+    --primary-color: #00A3E0;
+    --secondary-color: #2E8B57;
+    --button-bg-color: #00A3E0;
+    --button-hover-bg-color: #FF6F61;
+    --button-text-color: #ffffff;
+}
+
+/* ========================= */
+/* Sign-Up Form Styling (Now Always Visible) */
+/* ========================= */
+.signup-container {
+    background: var(--secondary-color);
+    color: var(--text-color);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+    margin: 50px auto; /* Centering fix */
+}
+
+/* Form Alignment */
+.signup-container form {
+    display: flex;
+    flex-direction: column; /* Stack inputs vertically */
+    gap: 15px; /* Spacing between fields */
+}
+
+/* Labels */
+.signup-container label {
+    font-weight: bold;
+    color: var(--text-color);
+    text-align: left;
+}
+
+/* Input Fields */
+.signup-container input {
+    padding: 12px;
+    font-size: 16px;
+    width: 100%;
+    border: 2px solid var(--primary-color);
+    background: var(--bg-color);
+    color: var(--text-color);
+    border-radius: 5px;
+    transition: border 0.3s ease-in-out;
+}
+
+/* Input Focus */
+.signup-container input:focus {
+    border-color: var(--button-hover-bg-color);
+    outline: none;
+}
+
+/* Button Styling */
+.signup-container button {
+    margin-top: 15px; /* Spacing between password and button */
+    width: 100%;
+    padding: 12px;
+    background: var(--button-bg-color);
+    color: var(--button-text-color);
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out, transform 0.2s, box-shadow 0.3s ease-in-out;
+}
+
+.signup-container button:hover {
+    background: var(--button-hover-bg-color);
+    transform: scale(1.05);
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* ========================= */
+/* Theme Switcher Styling */
+/* ========================= */
+.theme-switcher {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    text-align: right;
+}
+
+.theme-switcher select {
+    padding: 8px;
+    font-size: 16px;
+}
+
+/* ========================= */
+/* Responsive Design */
+/* ========================= */
+@media (max-width: 600px) {
+    .signup-container {
+        width: 90%;
+        padding: 20px;
+    }
+
+    .signup-container input,
+    .signup-container button {
+        font-size: 14px;
+        padding: 10px;
+    }
+}
+
+/* Fade-In Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
