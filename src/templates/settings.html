@@ -1,0 +1,66 @@
+ <!-- CSS for all pages -->
+ <link rel="stylesheet" href="../css/style.css" />
+ <link rel="stylesheet" href="../css/general.css" />
+ <link rel="stylesheet" href="../css/layouts.css" />
+ <link rel="stylesheet" href="../css/settings.css" />
+</head>
+
+<body>
+ <script type="text/javascript" src="../js/globals.js"></script>
+ <!-- Top Panel -->
+ <header>
+   <a href="../index.html">
+     <button>Tasks</button>
+   </a>
+ </header>
+
+ <!-- Modal for adding new task -->
+ <div class="modal" id="add-task">
+   <div class="modal-content">
+     <span class="close" onclick="closeTaskWindow()">&times;</span>
+     <h2>Add a New Task</h2>
+     <form id="add-task-form" onsubmit="addTask(event)">
+       <label for="task-name">Task Name:</label>
+       <input type="text" id="task-name" name="task-name" required />
+       <br />
+       <label for="task-due-date">Due Date:</label>
+       <input type="date" id="task-due-date" name="task-due-date" />
+       <br />
+       <button type="submit">Add Task</button>
+     </form>
+   </div>
+ </div>
+
+ <div class="main-content">
+     <h2>Settings</h2>
+     <div>
+         <h3>Layout</h3>
+         <menu id="layouts"></menu>
+     </div>
+     <div>
+         <h3>Theme</h3>
+         <menu id="themes"></menu>
+     </div>
+     <div>
+         <h3>Fonts</h3>
+         <menu id="fonts"></menu>
+     </div>
+     <div>
+         <h3>Quote Packs</h3>
+         <menu id="quotes">
+           <div><input type="checkbox" value="QUOTES_POSITIVE">Positive</input></div>
+           <div><input type="checkbox" value="QUOTES_NEGATIVE">Negative</input></div>
+           <div><input type="checkbox" value="QUOTES_CAT">Cat</input></div>
+           <div><input type="checkbox" value="QUOTES_POP">Pop Culture</input></div>
+           <div><input type="checkbox" value="QUOTES_PHIL">Philosophical</input></div>
+           <div><input type="checkbox" value="QUOTES_PROGRAMMING">Programming</input></div>
+         </menu>
+     </div>
+ </div>
+ <!-- Footer -->
+ <footer>
+   <h1 id="motivational-quote">Your Life in a Glance</h1>
+ </footer>
+
+ <script src="../js/settings.js"></script>
+</body>

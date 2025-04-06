@@ -1,0 +1,239 @@
+:root {
+    /* Theme Variables (default dark) */
+    --primary-color: #4c6ef5;
+    --secondary-color: #15aabf;
+    --dark-bg: #1E1E1E;
+    --light-bg: #2C2C2C;
+    --text-color: #e0e0e0;
+    --container-bg: var(--light-bg);
+    --border-radius: 12px;
+    --transition-duration: 0.3s;
+    --shadow-light: rgba(0, 0, 0, 0.5);
+    --shadow-dark: rgba(0, 0, 0, 0.8);
+    /* Keeping the neumorphic shadow variable in case you want it later */
+    --neumorphic-shadow: 8px 8px 16px #1a1a1a, -8px -8px 16px #323232;
+  }
+  
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: 'Roboto', sans-serif;
+    background: var(--dark-bg);
+    color: var(--text-color);
+    line-height: 1.6;
+    transition: background var(--transition-duration), color var(--transition-duration);
+  }
+  
+  /* Header with animated gradient */
+  header {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background-size: 400% 400%;
+    animation: gradientShift 10s ease infinite;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 4px 12px var(--shadow-light);
+  }
+  
+  @keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
+  /* Header buttons container */
+  .header-buttons {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    gap: 10px;
+  }
+  
+  /* Back to Calendar Button */
+  .back-button {
+    background: #fff;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    padding: 8px 12px;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    font-weight: 500;
+    cursor: pointer;
+    transition:
+      transform var(--transition-duration),
+      box-shadow var(--transition-duration),
+      background var(--transition-duration),
+      color var(--transition-duration);
+  }
+  
+  .back-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px var(--shadow-dark);
+    background: var(--primary-color);
+    color: #fff;
+  }
+  
+  /* Main container */
+  .container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+  }
+  
+  /* Selection row */
+  .selection {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .selection label {
+    font-weight: 500;
+    margin-right: 10px;
+  }
+  
+  .selection select {
+    padding: 8px 12px;
+    border: 1px solid #666;
+    border-radius: var(--border-radius);
+    margin-right: 10px;
+    background: var(--container-bg);
+    color: #fff;
+    transition: box-shadow var(--transition-duration);
+  }
+  
+  .selection select:focus {
+    outline: none;
+    box-shadow: 0 0 5px var(--primary-color);
+  }
+  
+  #stock-select {
+    flex: 1;
+    min-width: 200px;
+  }
+  
+  #time-range-select {
+    flex: 0 0 auto;
+    width: 120px;
+  }
+  
+  .selection button {
+    padding: 8px 16px;
+    border: none;
+    background: var(--primary-color);
+    color: #fff;
+    font-weight: 500;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: transform var(--transition-duration), box-shadow var(--transition-duration);
+  }
+  
+  .selection button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px var(--shadow-dark);
+  }
+  
+  /* Chart container WITHOUT box-shadow, now with overflow hidden to show rounded corners */
+  .chart-container {
+    position: relative;
+    height: 400px;
+    margin-bottom: 20px;
+    background: var(--container-bg);
+    border-radius: var(--border-radius);
+    overflow: hidden; /* Ensures the canvas doesn't hide the rounded corners */
+    animation: fadeInUp 0.5s ease-out;
+  }
+  
+  .chart-container canvas {
+    background: var(--container-bg);
+  }
+  
+  /* Loading Spinner */
+  .spinner {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 50px;
+    height: 50px;
+    margin: -25px 0 0 -25px;
+    border: 5px solid rgba(255, 255, 255, 0.3);
+    border-top: 5px solid #fff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+  }
+  
+  /* Key Details Section WITHOUT box-shadow */
+  .key-details {
+    margin-top: 20px;
+    padding: 20px;
+    background: var(--container-bg);
+    border-radius: var(--border-radius);
+    animation: fadeInUp 0.5s ease-out;
+  }
+  
+  .key-details h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .key-details table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .key-details th, .key-details td {
+    padding: 8px 12px;
+    border: 1px solid #666;
+    text-align: left;
+    color: #fff;
+  }
+  
+  .key-details th {
+    background-color: #333;
+  }
+  
+  /* Company Logo */
+  .company-logo {
+    display: block;
+    max-width: 150px;
+    margin: 0 auto 20px;
+  }
+  
+  /* Fade-In Animation */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 600px) {
+    .selection {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    
+    #time-range-select {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  }
+  

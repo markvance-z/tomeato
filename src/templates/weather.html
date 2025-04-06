@@ -1,0 +1,94 @@
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/weather.css" />
+
+  <body>
+    <!-- Top navigation with Back to Calendar button -->
+  
+  <nav>
+    <button class="back-button" onclick="window.location.href='../index.html'">
+      ← Back to Calendar
+    </button>
+  </nav>
+  
+  
+    <!-- Main container -->
+    <div class="container">
+      <header>
+        <h1>Global Weather Dashboard</h1>
+        <p>Select a major city or use your location to see current weather and today’s forecast.</p>
+      </header>
+      <main>
+        <div class="controls">
+          <div class="select-wrapper">
+            <select id="citySelect">
+              <!-- North American Cities -->
+              <option value="Detroit">Detroit</option>
+              <option value="New York">New York</option>
+              <option value="Miami">Miami</option>
+              <option value="Los Angeles">Los Angeles</option>
+              <option value="Chicago">Chicago</option>
+              <option value="Houston">Houston</option>
+              <option value="Washington, D.C.">Washington, D.C.</option>
+              <option value="Boston">Boston</option>
+              <option value="Seattle">Seattle</option>
+              <option value="San Francisco">San Francisco</option>
+              <!-- International Cities -->
+              <option value="London">London</option>
+              <option value="Tokyo">Tokyo</option>
+              <option value="Paris">Paris</option>
+              <option value="Beijing">Beijing</option>
+              <option value="Shanghai">Shanghai</option>
+              <option value="Hong Kong">Hong Kong</option>
+              <option value="Singapore">Singapore</option>
+              <option value="Berlin">Berlin</option>
+              <option value="Madrid">Madrid</option>
+              <option value="Rome">Rome</option>
+              <option value="Moscow">Moscow</option>
+              <option value="Sydney">Sydney</option>
+              <option value="Toronto">Toronto</option>
+              <option value="Montreal">Montreal</option>
+              <option value="Vancouver">Vancouver</option>
+              <option value="Dubai">Dubai</option>
+              <option value="Mumbai">Mumbai</option>
+              <option value="Delhi">Delhi</option>
+              <option value="Bangalore">Bangalore</option>
+              <option value="Seoul">Seoul</option>
+              <option value="Bangkok">Bangkok</option>
+              <option value="Kuala Lumpur">Kuala Lumpur</option>
+              <option value="Istanbul">Istanbul</option>
+              <option value="Mexico City">Mexico City</option>
+              <option value="São Paulo">São Paulo</option>
+              <option value="Buenos Aires">Buenos Aires</option>
+              <option value="Cape Town">Cape Town</option>
+              <option value="Johannesburg">Johannesburg</option>
+              <option value="Lagos">Lagos</option>
+              <option value="Nairobi">Nairobi</option>
+              <option value="Amsterdam">Amsterdam</option>
+              <option value="Vienna">Vienna</option>
+              <option value="Zurich">Zurich</option>
+              <option value="Stockholm">Stockholm</option>
+              <option value="Oslo">Oslo</option>
+              <option value="Helsinki">Helsinki</option>
+              <option value="Copenhagen">Copenhagen</option>
+              <option value="Brussels">Brussels</option>
+              <option value="Dublin">Dublin</option>
+              <option value="Lisbon">Lisbon</option>
+              <option value="Athens">Athens</option>
+              <option value="Prague">Prague</option>
+              <option value="Budapest">Budapest</option>
+              <option value="Warsaw">Warsaw</option>
+            </select>
+          </div>
+          <div class="buttons">
+            <button id="getWeatherBtn">Get Weather</button>
+            <button id="getLocationWeatherBtn">Use My Location</button>
+          </div>
+        </div>
+        <!-- Weather and Forecast Widgets -->
+        <section id="weatherWidget" class="widget"></section>
+        <section id="forecastWidget" class="widget"></section>
+      </main>
+    </div>
+  
+    <script src="../js/weather.js"></script>
+  </body>

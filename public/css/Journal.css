@@ -1,0 +1,394 @@
+/* -------------------------------
+   Journal.css
+   ------------------------------- */
+
+/* Ocean Waves Animated Background */
+body {
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  background-attachment: fixed;
+  position: relative;
+}
+
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Back Button */
+.back-btn {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  display: inline-block;
+  margin-bottom: 20px;
+  border: none;
+}
+
+/* Date Navigation (top-right) */
+.date-nav {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+#journal-date {
+  font-weight: bold;
+  font-size: 1rem;
+  text-decoration: underline;
+}
+
+/* Mini Calendar Styles */
+.mini-calendar {
+  position: absolute;
+  top: 60px;
+  right: 30px;
+  width: 220px;
+  background: rgba(0, 0, 0, 0.7);
+  border: 2px solid #fff;
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  z-index: 999;
+}
+
+.mini-calendar-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.mini-calendar-nav button {
+  background: #fff;
+  color: #000;
+  border: none;
+  padding: 5px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+#mini-calendar-title {
+  font-weight: bold;
+  color: #fff;
+}
+
+.mini-calendar-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #fff;
+}
+
+.mini-calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+}
+
+.mini-calendar-day {
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+.mini-calendar-day:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.mini-calendar-day.disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.mini-calendar-day.empty {
+  background: transparent;
+  cursor: default;
+}
+
+/* Journal Container */
+.journal-container {
+  opacity: 1;
+  transform: translateY(0);
+  animation: fadeIn 0.8s ease-in-out;
+  background: rgba(255, 255, 255, 0.9);
+  color: #000;
+  padding: 20px;
+  max-width: 600px;
+  margin: 10px auto;
+  border-radius: 10px;
+  border: 2px solid #ccc;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.journal-container h2 {
+  color: #000;
+  margin-top: 0;
+}
+
+#journal-title {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  color: #000;
+  background: #fff;
+  border-radius: 4px;
+}
+
+#journal-text {
+  display: block;
+  width: 100%;
+  height: 200px;
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  resize: none;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  color: #000;
+  background: #fff;
+}
+
+#save-journal {
+  margin-top: 5px;
+  padding: 10px;
+  background: #ccc;
+  color: #000;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: transform 0.2s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+#save-journal:hover {
+  background: #bbb;
+  transform: scale(1.05);
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Journal Image Container */
+.journal-image-container {
+  opacity: 1;
+  transform: translateY(0);
+  animation: fadeIn 0.8s ease-in-out;
+  background: rgba(255, 255, 255, 0.9);
+  color: #000;
+  padding: 20px;
+  max-width: 600px;
+  margin: 10px auto;
+  border-radius: 10px;
+  border: 2px solid #ccc;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.journal-image-container h3 {
+  color: #000;
+  margin-top: 0;
+}
+
+#journal-image-input {
+  display: block;
+  margin-bottom: 10px;
+}
+
+#image-preview img {
+  max-width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* -------------------------------
+   Toggle Switch Styles for Journal/Notes
+--------------------------------- */
+.toggle-switch-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.toggle-switch-container span {
+  margin: 0 10px;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+/* Switch Container */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 80px;  /* Extended width */
+  height: 34px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* Slider (Track) */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+/* Checked state */
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:checked + .slider:before {
+  transform: translateX(50px); /* Adjusted for extended width */
+}
+
+/* -------------------------------
+   Notes Section Styles
+--------------------------------- */
+#notes-section {
+  display: none; /* Shown by JS or toggled with .active, etc. */
+}
+
+.notes-container {
+  max-width: 600px;
+  margin: 10px auto;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 20px;
+  border-radius: 10px;
+  border: 2px solid #ccc;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+  color: #000;
+}
+
+/* 
+   Make sure both #notes-title and #notes-textarea have the same box-sizing, 
+   padding, and border so they line up properly.
+*/
+/* Title Input: smaller, single-line */
+#notes-title {
+  box-sizing: border-box;
+  width: 100%;
+  height: 40px;       /* smaller height for title */
+  margin-bottom: 10px;
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background: #fff;
+  color: #000;
+}
+
+/* Textarea: bigger for notes */
+#notes-textarea {
+  box-sizing: border-box;
+  width: 100%;
+  height: 300px;      /* larger height for notes */
+  margin-bottom: 20px;/* extra space before Save button */
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background: #fff;
+  color: #000;
+  resize: none;       /* no manual resizing */
+  display: none;      /* if you're toggling with .mode-write */
+}
+
+/* If you're using .mode-write to toggle the textarea on/off */
+.mode-write #notes-textarea {
+  display: block;
+}
+
+
+
+/* If the container (or parent) has .mode-write, show the textarea */
+.mode-write #notes-textarea {
+  display: block;
+}
+
+/* 
+   Container for the textarea and/or canvas 
+   (We removed inline styles from HTML)
+*/
+#notes-content {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  min-height: 300px;
+  position: relative;
+}
+
+/* Canvas for drawing notes if used */
+#notes-canvas {
+  border: 1px solid #ccc;
+  display: none;
+  width: 100%;
+  height: 300px;
+  cursor: crosshair;
+}
+
+/* Default modes for Notes */
+.mode-draw #notes-canvas {
+  display: block;
+}
