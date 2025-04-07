@@ -4,9 +4,9 @@
 const assert = require("assert");
 
 // Load .env only if not in production
-//if (process.env.NODE_ENV !== "production") {
-//    dotenv.config();
-//}
+if (process.env.NODE_ENV !== "production") {
+    dotenv.config();
+}
 
 const {
     PORT,
