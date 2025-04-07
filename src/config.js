@@ -32,7 +32,7 @@ assert(HOST, "HOST is requried");
 
 module.exports = {
     port,
-    host,
+    HOST: host,
     url: HOST_URL || `http://${host}:${port}`, 
     cookiePwd: COOKIE_ENCRYPT_PWD,
     sql: {
