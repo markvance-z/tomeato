@@ -1,6 +1,8 @@
 "use strict";
 
-//const dotenv = require("dotenv");
+if (process.env.NODE_ENV !== "production") {
+    require("dotenv").config();
+}
 const assert = require("assert");
 
 // Load .env only if not in production
