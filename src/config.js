@@ -3,7 +3,6 @@
 if (process.env.NODE_ENV !== "production") {
     require("dotenv").config();
 }
-const assert = require("assert");
 
 const {
     PORT,
@@ -22,13 +21,9 @@ const {
 const sqlEncrypt = process.env.SQL_ENCRYPT === 'true';
 
 // Use defaults if necessary
-const port = PORT || 8080;
-// For Azure, binding to "0.0.0.0" is usually best
-const host = HOST || "0.0.0.0";
+const port = process.env.PORT || 8080;
 
-//assert(PORT, "PORT is requried");
-assert(HOST, "HOST is requried");
-//add the rest of these assertions later
+const host = process.env.HOST || "0.0.0.0";
 
 module.exports = {
     port,
